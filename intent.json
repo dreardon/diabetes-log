@@ -1,0 +1,253 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "diabetes log",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "Insulin",
+                    "slots": [
+                        {
+                            "name": "InsulinSize",
+                            "type": "InsulinSize"
+                        },
+                        {
+                            "name": "InsulinType",
+                            "type": "InsulinType"
+                        }
+                    ],
+                    "samples": [
+                        "Add {InsulinSize} {InsulinType}",
+                        "Add {InsulinSize} "
+                    ]
+                },
+                {
+                    "name": "Carbohydrates",
+                    "slots": [
+                        {
+                            "name": "Carbs",
+                            "type": "AMAZON.NUMBER"
+                        }
+                    ],
+                    "samples": [
+                        "add {Carbs} grams of carbs",
+                        "add {Carbs} grams of food",
+                        "add {Carbs} carbohydrates",
+                        "add {Carbs} carbs"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "BloodSugar",
+                    "slots": [],
+                    "samples": [
+                        "about his blood sugar",
+                        "What is his number",
+                        "What is his blood sugar"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "InsulinSize",
+                    "values": [
+                        {
+                            "id": "9",
+                            "name": {
+                                "value": "5",
+                                "synonyms": [
+                                    "five point zero",
+                                    "five"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "10",
+                            "name": {
+                                "value": "6",
+                                "synonyms": [
+                                    "six",
+                                    "six point zero"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "8",
+                            "name": {
+                                "value": "4.0",
+                                "synonyms": [
+                                    "four point zero",
+                                    "four"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "7",
+                            "name": {
+                                "value": "3.5",
+                                "synonyms": [
+                                    "three and a half",
+                                    "three point five"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "6",
+                            "name": {
+                                "value": "3.0",
+                                "synonyms": [
+                                    "three",
+                                    "three point zero"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "5",
+                            "name": {
+                                "value": "2.5",
+                                "synonyms": [
+                                    "two and a half",
+                                    "two point five",
+                                    "two and a half"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "4",
+                            "name": {
+                                "value": "2.0",
+                                "synonyms": [
+                                    "to",
+                                    "too",
+                                    "two point zero",
+                                    "two"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "3",
+                            "name": {
+                                "value": "1.5",
+                                "synonyms": [
+                                    "1 point 5",
+                                    "one and a half",
+                                    "one point five"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "2",
+                            "name": {
+                                "value": "1.0",
+                                "synonyms": [
+                                    "1 point 0",
+                                    "one point zero",
+                                    "one"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "name": {
+                                "value": "0.5",
+                                "synonyms": [
+                                    "point 5",
+                                    "one half",
+                                    "zero point five",
+                                    "point five",
+                                    "half"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "InsulinType",
+                    "values": [
+                        {
+                            "id": "2",
+                            "name": {
+                                "value": "Long",
+                                "synonyms": [
+                                    "lawn",
+                                    "Tresiba",
+                                    "slow",
+                                    "long",
+                                    "Lantus",
+                                    "daily"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "1",
+                            "name": {
+                                "value": "Rapid",
+                                "synonyms": [
+                                    "fast",
+                                    "short",
+                                    "rapid",
+                                    "Novalog",
+                                    "Novolog",
+                                    "quick"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "Insulin",
+                    "confirmationRequired": true,
+                    "prompts": {
+                        "confirmation": "Confirm.Intent.1512188006252"
+                    },
+                    "slots": [
+                        {
+                            "name": "InsulinSize",
+                            "type": "InsulinSize",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "InsulinType",
+                            "type": "InsulinType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "SKILL_RESPONSE"
+        },
+        "prompts": [
+            {
+                "id": "Confirm.Intent.1512188006252",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Should I add {InsulinSize} {InsulinType} ?"
+                    }
+                ]
+            }
+        ]
+    }
+}
